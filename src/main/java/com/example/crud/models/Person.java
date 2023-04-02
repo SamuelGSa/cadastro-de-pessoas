@@ -3,10 +3,16 @@ package com.example.crud.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
 public class Person {
 
     @GeneratedValue
@@ -17,35 +23,5 @@ public class Person {
 
     private int age;
 
-    public Person(){}
-
-    public Person (String name, int age){
-        super();
-        this.name = name;
-        this.age = age;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public Person() {}
 }

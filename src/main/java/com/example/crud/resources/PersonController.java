@@ -2,6 +2,7 @@ package com.example.crud.resources;
 
 import com.example.crud.models.Person;
 import com.example.crud.repositories.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +13,8 @@ import java.util.*;
 @RequestMapping("/persons")
 public class PersonController {
 
+    @Autowired
     private PersonRepository personRepository;
-
-    public PersonController(PersonRepository personRepository){
-        super();
-        this.personRepository = personRepository;
-    }
 
     @PostMapping
     public ResponseEntity<Person>save(@RequestBody Person person){
