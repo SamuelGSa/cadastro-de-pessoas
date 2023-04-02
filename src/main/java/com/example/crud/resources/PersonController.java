@@ -6,10 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/persons")
@@ -36,7 +33,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Person>> getById(@PathVariable Integer id) {
+    public ResponseEntity<Optional<Person>> getById(@PathVariable UUID id) {
         Optional<Person> person;
         try {
             person = personRepository.findById(id);
@@ -47,7 +44,7 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Optional<Person>> deleteByID(@PathVariable Integer id){
+    public ResponseEntity<Optional<Person>> deleteByID(@PathVariable UUID id){
         try {
             personRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -57,7 +54,7 @@ public class PersonController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Person> update(@PathVariable Integer id, @RequestBody Person newperson) {
+    public ResponseEntity<Person> update(@PathVariable UUID id, @RequestBody Person newperson) {
         return personRepository.findById(id)
                 .map(person -> {
                     person.setName(newperson.getName());

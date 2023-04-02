@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.UUID;
+
 @Entity
 public class Person {
 
     @GeneratedValue
     @Id
-    private int id;
+    private UUID id;
 
     private String name;
 
@@ -23,7 +25,7 @@ public class Person {
         this.age = age;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -35,7 +37,7 @@ public class Person {
         return age;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
